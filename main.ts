@@ -997,9 +997,10 @@
      * Convert the battery value to the standard command and send it to the mobile phone. The APP displays the current voltage.
      */
     //% weight=62 blockId=convertBattery block="Convert battery %data"
-    export function convertBattery(data: number): string {
+    export function convertBattery(data: string): string {
         let cmdStr: string = "CMD|07|";
-        cmdStr += data.toString();
+	data -= "$";
+        cmdStr += data;
         cmdStr += "|$";
         return cmdStr;
     }
