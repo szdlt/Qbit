@@ -987,9 +987,10 @@
      */
     //% weight=64 blockId=convertLight block="Convert light %data"
     export function convertLight(data: number): string {
-        let cmdStr: string = "CMD|06|";
+     //   let cmdStr: string = "CMD|06|";
+	let cmdStr: string = "";
         cmdStr += data.toString();
-        cmdStr += "|$";
+     // cmdStr += "|$";
         return cmdStr;
     }
     
