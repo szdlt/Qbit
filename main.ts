@@ -999,8 +999,8 @@
     //% weight=62 blockId=convertBattery block="Convert battery %data"
     export function convertBattery(str: string): string {
           let cmdStr: string = "CMD|07|"; 
-	  let index = findIndexof(str, "$", 0);
-          let value: string = str.substr(0, index);
+	//  let index = findIndexof(str, "$", 0);
+          let value: string = str.substr(1);
           cmdStr += value;
           cmdStr += "|$";
           return cmdStr;
