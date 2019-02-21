@@ -987,10 +987,9 @@
      */
     //% weight=64 blockId=convertLight block="Convert light %data"
     export function convertLight(data: number): string {
-     //   let cmdStr: string = "CMD|06|";
-	let cmdStr: string = "";
+        let cmdStr: string = "CMD|06|";
         cmdStr += data.toString();
-     // cmdStr += "|$";
+        cmdStr += "|$";
         return cmdStr;
     }
     
@@ -1000,10 +999,10 @@
     //% weight=62 blockId=convertBattery block="Convert battery %data"
     export function convertBattery(str: string): string {
       //  let cmdStr: string = "CMD|07|";
-	  let cmdStr: string = " ";
-      //  cmdStr += str.substring(0,2);
+	  let cmdStr: string = "";
+          cmdStr += str.substring(0,2);
       //  cmdStr += str.substring(0,1);
-        cmdStr += "|$";
-        return cmdStr;
+          cmdStr += "|$";
+          return cmdStr;
     }
 }
