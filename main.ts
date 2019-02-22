@@ -1,8 +1,8 @@
 /*
- qbit package
+ dlbit package
 */
  //% weight=10 icon="\uf013" color=#2896ff
- namespace qbit {
+ namespace dlbit {
 	
     export enum Colors {
         //% blockId="Red" block="Red"
@@ -24,7 +24,7 @@
         SENSOR2_OBSTACLE = 0x02
     }
 	
-    export enum QbitRunType {
+    export enum DlbitRunType {
 	//% block="Stop"
 	STOP = 0x00,
 	//% block="Run"
@@ -92,7 +92,7 @@
     }
 
 
-    let lhRGBLight: QbitRGBLight.LHQbitRGBLight;
+    let lhRGBLight: DlbitRGBLight.LHDlbitRGBLight;
     let obstacleSensor1: boolean = false;
     let obstacleSensor2: boolean = false;
     let currentVoltage: number = 0;
@@ -100,10 +100,10 @@
     let versionFlag: boolean = false; 
     let readTimes = 0;
 	/**
-   * Qbit initialization, please execute at boot time
+   * Dlbit initialization, please execute at boot time
   */
-    //% weight=100 blockId=qbitInit block="Initialize Qbit"
-    export function qbitInit() {
+    //% weight=100 blockId=dlbitInit block="Initialize Dlbit"
+    export function dlbitInit() {
         initRGBLight();
         initColorSensor();
         serial.redirect(
@@ -293,9 +293,9 @@
     
     
 /**
-* Set the center balance angle of the Qbit
+* Set the center balance angle of the Dlbit
 */
-//% weight=98 blockId=setBLAngle block="Set the center balance angle of the Qbit"
+//% weight=98 blockId=setBLAngle block="Set the center balance angle of the Dlbit"
     export function setBLAngle() {
    let buf = pins.createBuffer(5);
    buf[0] = 0x55;
@@ -348,10 +348,10 @@
  }
    
       /**
-    * Stop Qbit run.
+    * Stop Dlbit run.
     */
-    //% weight=95 blockId=setQbitRun block="Set Qbit %runType"
-    export function setQbitRun(runType: QbitRunType) {
+    //% weight=95 blockId=setDlbitRun block="Set Dlbit %runType"
+    export function setDlbitRun(runType: DlbitRunType) {
         let buf = pins.createBuffer(5);
         buf[0] = 0x55;
         buf[1] = 0x55;
@@ -392,7 +392,7 @@
 	 */
 	function initRGBLight() {
 		if (!lhRGBLight) {
-			lhRGBLight = QbitRGBLight.create(DigitalPin.P15, 4, QbitRGBPixelMode.RGB);
+			lhRGBLight = DlbitRGBLight.create(DigitalPin.P15, 4, DlbitRGBPixelMode.RGB);
         }
         clearLight();
     }
@@ -411,7 +411,7 @@
      * Set the color of the colored lights, after finished the setting please perform  the display of colored lights.
      */
     //% weight=91 blockId=setPixelRGB block="Set|%lightoffset|color to %rgb"
-    export function setPixelRGB(lightoffset: Lights, rgb: QbitRGBColors)
+    export function setPixelRGB(lightoffset: Lights, rgb: DlbitRGBColors)
     { 
         lhRGBLight.setPixelColor(lightoffset, rgb, versionFlag);
      }
@@ -718,8 +718,8 @@
 	//% weight=84 blockId=checkCurrentColor block="Current color %color"
      export function checkCurrentColor(color: Colors): boolean {
 	setBrightness(150);     
-        setPixelRGB(Lights.Light1, QbitRGBColors.White);
-        setPixelRGB(Lights.Light2, QbitRGBColors.White);
+        setPixelRGB(Lights.Light1, DlbitRGBColors.White);
+        setPixelRGB(Lights.Light2, DlbitRGBColors.White);
         showLight(); 
 		let r = readRedLight();
 		let g = readGreenLight();
@@ -842,9 +842,9 @@
     } 
 
     /**
-	 * Get Qbit current voltage,the unit is mV
+	 * Get Dlbit current voltage,the unit is mV
 	 */
-    //% weight=78 blockId=getBatVoltage block="Get Qbit current voltage (mV)"
+    //% weight=78 blockId=getBatVoltage block="Get Dlbit current voltage (mV)"
     export function getBatVoltage(): number {
         return currentVoltage;
     }
