@@ -392,7 +392,7 @@
 	 */
 	function initRGBLight() {
 		if (!lhRGBLight) {
-			lhRGBLight = DlbitRGBLight.create(DigitalPin.P15, 4, DlbitRGBPixelMode.RGB);
+			lhRGBLight = DlbitRGBLight.create(DigitalPin.P16, 4, DlbitRGBPixelMode.RGB);
         }
         clearLight();
     }
